@@ -17,3 +17,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class , 'index']);
 Route::get('/post-form', [App\Http\Controllers\HomeController::class , 'formPage']);
 Route::post('/add-post', [App\Http\Controllers\HomeController::class , 'addPost']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
