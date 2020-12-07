@@ -1,0 +1,4 @@
+.idea
+.vscode
+.env
+start_ide.sh
