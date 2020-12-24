@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\{ToDoListController, HomeController, PostController};
+use App\Http\Controllers\{
+    ToDoListController,
+    HomeController,
+    PostController,
+    MountainController};
 
 Route::get('/', [HomeController::class , 'index']);
 Route::get('/post-form', [HomeController::class , 'formPage']);
@@ -18,3 +22,5 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     
     Route::get('/posts', [PostController::class, 'index']);
    });
+
+Route::get('/mountains', [MountainController::class, 'index']);

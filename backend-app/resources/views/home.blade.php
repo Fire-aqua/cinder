@@ -23,4 +23,5 @@
 
 <div><a href="/todo">to do list</a></div>
 <div><a href="/posts">posts</a></div>
+<div><a href="/mountains">mountains</a></div>
 @endsection
