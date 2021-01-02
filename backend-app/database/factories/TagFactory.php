@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Mountain;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MountainFactory extends Factory
+class TagFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Mountain::class;
+    protected $model = Tag::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,7 @@ class MountainFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word(),
-            'height' => $this->faker->numberBetween(500, 8850),
-            'is_icy' => $this->faker->boolean()
+            'name' => $this->faker->word()
         ];
     }
 }

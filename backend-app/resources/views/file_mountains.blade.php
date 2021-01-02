@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div>
     <form action="{{url('mountains')}}" method="GET" class="form">
@@ -37,20 +36,47 @@
             </div>
         </div>
     </form>
-    
 </div>
+@auth
+    <div>
+        <form action="{{url('mountains')}}" method="POST" class="form">
+            {!! csrf_field() !!}
+            <div class="form-check form-check-inline d-flex">
+                <input placeholder="Название" class="form-control mr-2" type="string" name="name">
+                <input placeholder="Высота" class="form-control" type="number" name="height">
+                <input name="is_icy" class="form-control" type="radio" value="1"> <label class="form-check-label ml-2">Лед есть</label>
+                <input name="is_icy" class="form-control" type="radio" value="0"><label class="form-check-label ml-2">Льда нет</label>
+            </div>
+            <div class="row my-3">
+                <div class="col">
+                    <button type="submit" class="btn btn-outline-primary btn-block">Добавить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+@endauth
 <div class="table-responsive ">
     <table class="table table-striped table-bordered">
-        <tr>
+        <tr class="text-center">
             <th>Название горы</th>
             <th>Высота (метры)</th>
             <th>Наличие льда</th>
+            @auth<th></th>@endauth
         </tr>
         @foreach ($mountains as $mountain)
             <tr>
                 <td>{{$mountain->name}}</td>
                 <td>{{$mountain->height}}</td>
                 <td>{{$mountain->is_icy}}</td>
+                @auth
+                    <td class="text-center">
+                        <form action="{{url('mountains/'.$mountain->id)}}" method="POST" class="form">
+                            {!! csrf_field() !!}
+                            {!! method_field('DELETE') !!}
+                            <button type="submit" class="btn btn-secondary">Удалить</button>
+                        </form>
+                    </td>
+                @endauth
             </tr>
         @endforeach
     </table>

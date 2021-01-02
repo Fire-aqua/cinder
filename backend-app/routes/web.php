@@ -9,9 +9,7 @@ use App\Http\Controllers\{
     MountainController};
 
 Route::get('/', [HomeController::class , 'index']);
-Route::get('/post-form', [HomeController::class , 'formPage']);
-Route::post('/add-post', [HomeController::class , 'addPost']);
-
+Route::get('/post-form', [HomeController::class, 'formPage']);
 
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
@@ -21,6 +19,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::delete('/task/{task}', [ToDoListController:: class, 'delTasks']);
     
     Route::get('/posts', [PostController::class, 'index']);
-   });
+    Route::get('/posts/{id}', [PostController::class, 'getPost']);
+    Route::post('/posts', [PostController::class, 'savePost']);
+});
 
 Route::get('/mountains', [MountainController::class, 'index']);
+Route::post('/mountains', [MountainController::class, 'create']);
+Route::delete('/mountains/{id}',[MountainController::class, 'delete']);

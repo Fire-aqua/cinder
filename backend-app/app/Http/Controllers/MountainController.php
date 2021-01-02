@@ -26,6 +26,22 @@ class MountainController extends Controller
         ->when($maxHeight, fn($query)=> $query->where('height', '<=', $maxHeight) )
         
         ->get();
-        return view('mountains', compact('mountains', 'isIcy', 'minHeight', 'maxHeight'));
+        return view('file_mountains', compact('mountains', 'isIcy', 'minHeight', 'maxHeight'));
+    }
+
+    public function create(Request $request)
+    {
+        $mountain = new Mountain;
+        $mountain->name = $request->name;
+        $mountain->height = $request->height;
+        $mountain->is_icy = $request->is_icy;
+        $mountain->save();
+        return redirect('/mountains');        
+    }
+    
+    public function delete(Request $request, $id)
+    {
+        Mountain::find($id)->delete();
+        return redirect('/mountains');
     }
 }

@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Mountain;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MountainFactory extends Factory
+class PostFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Mountain::class;
+    protected $model = Post::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +23,9 @@ class MountainFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word(),
-            'height' => $this->faker->numberBetween(500, 8850),
-            'is_icy' => $this->faker->boolean()
+            'user_id' => User::inRandomOrder()->first()->id,
+            'title' => $this->faker->sentence(),
+            'body' => $this->faker->paragraph(2)
         ];
     }
 }

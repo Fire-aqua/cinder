@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            MountainTableSeeder::class
+            MountainTableSeeder::class,
+            TagTableSeeder::class,
+            PostTableSeeder::class,
         ]);
     }
 }
