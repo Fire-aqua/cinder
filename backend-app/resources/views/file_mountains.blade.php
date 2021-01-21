@@ -41,11 +41,11 @@
     <div>
         <form action="{{url('mountains')}}" method="POST" class="form">
             {!! csrf_field() !!}
-            <div class="form-check form-check-inline d-flex">
-                <input placeholder="Название" class="form-control mr-2" type="string" name="name">
-                <input placeholder="Высота" class="form-control" type="number" name="height">
-                <input name="is_icy" class="form-control" type="radio" value="1"> <label class="form-check-label ml-2">Лед есть</label>
-                <input name="is_icy" class="form-control" type="radio" value="0"><label class="form-check-label ml-2">Льда нет</label>
+            <div class="d-flex form-check-inline">
+                <input placeholder="Название" class="form-control m-2" type="string" name="name">
+                <input placeholder="Высота" class="form-control m-2" type="number" name="height">
+                <input name="is_icy" class="m-2" type="radio" value="1"> <label class="form-check-label ml-2">Лед есть</label>
+                <input name="is_icy" class="m-2" type="radio" value="0"> <label class="form-check-label ml-2">Льда нет</label>
             </div>
             <div class="row my-3">
                 <div class="col">

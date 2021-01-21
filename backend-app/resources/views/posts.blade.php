@@ -3,9 +3,9 @@
 
 @auth
     <div class="text-right my-3">    
-        <a class="btn btn-primary" href="/posts/new" role="button">Добавить новость</a>
+        <a class="btn btn-primary" href="/posts/create" role="button">Добавить новость</a>
     </div>
-        @endauth
+@endauth
 
 @foreach ($posts as $post)
     <div class="card my-2">
@@ -14,15 +14,22 @@
             <div class="card-text">{{$post->body}}</div>
             <div>
                 @foreach ($post->tags as $tag)
-                    <span class="badge badge-secondary">{{$tag->name}}</span>
+                    <span class="badge bg-info">{{$tag->name}}</span>
                 @endforeach
             </div>
         </div>
-        @auth
-            <div class="text-right m-3">
-                <a class="btn btn-secondary" href="/posts/{{$post->id}}" role="button">Редактировать</a>
+        @if ($post->user_id==Auth::user()->id)
+            <div class="text-right mx-3">
+                <a class="btn btn-secondary" href="/posts/{{$post->id}}/edit" role="button">Редактировать</a>
             </div>
-        @endauth
+            <div class="text-right m-3">
+                <form action="{{ url('posts/'.$post->id) }}" method="POST">
+                    {!! csrf_field() !!}
+                    {!! method_field('DELETE') !!}
+                    <button type="submit" class="btn btn-secondary">Удалить</button>
+                </form>
+            </div>
+        @endif
     </div>
 @endforeach
 

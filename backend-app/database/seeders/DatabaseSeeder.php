@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             MountainTableSeeder::class,
             TagTableSeeder::class,
             PostTableSeeder::class,
+            GoodsTableSeeder::class,
         ]);
     }
 }

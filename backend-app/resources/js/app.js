@@ -5,8 +5,8 @@
  */
 
 require('./bootstrap');
-
-
-
+require('./pages/editpost');
+require('./pages/profile');
+require('./pages/goods');
 
 

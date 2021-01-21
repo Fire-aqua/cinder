@@ -7,14 +7,11 @@ use Illuminate\Http\Request;
 
 class ToDoListController extends Controller
 {
-    /*Show Task Dashboard*/
     public function getTasks()
     {
         $tasksArray = Task::all();
         return view('tasks', ['tasks' => $tasksArray]);
     }
-
-    //  * Add New Task
 
     public function addTasks(Request $request) {
         $newTask = new Task ();
@@ -23,8 +20,6 @@ class ToDoListController extends Controller
         $tasksArray = Task::all();
         return view('tasks', ['tasks' => $tasksArray]);
     }
-
-     // * Delete Task
 
      public function delTasks(Request $request, $id) {
         Task::find($id)->delete();        

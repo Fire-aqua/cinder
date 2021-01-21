@@ -6,7 +6,11 @@ use App\Http\Controllers\{
     ToDoListController,
     HomeController,
     PostController,
-    MountainController};
+    MountainController,
+    CatController,
+    BreedController,
+    ProfileController,
+    GoodController};
 
 Route::get('/', [HomeController::class , 'index']);
 Route::get('/post-form', [HomeController::class, 'formPage']);
@@ -17,12 +21,17 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/todo', [ToDoListController:: class, 'getTasks']);
     Route::post('/task', [ToDoListController:: class, 'addTasks']);
     Route::delete('/task/{task}', [ToDoListController:: class, 'delTasks']);
-    
-    Route::get('/posts', [PostController::class, 'index']);
-    Route::get('/posts/{id}', [PostController::class, 'getPost']);
-    Route::post('/posts', [PostController::class, 'savePost']);
+
+    Route::get('/user', [ProfileController::class, 'index']);
+    Route::post('/user', [ProfileController::class, 'saveUserData']);
+
+    Route::resource('goods', GoodController::class);
+
+    Route::resource('posts', PostController::class);
+    Route::resource('mountains', MountainController::class);
+    Route::resource('cats', CatController::class);
+    Route::resource('breeds', BreedController::class);
 });
 
-Route::get('/mountains', [MountainController::class, 'index']);
-Route::post('/mountains', [MountainController::class, 'create']);
-Route::delete('/mountains/{id}',[MountainController::class, 'delete']);
+
+

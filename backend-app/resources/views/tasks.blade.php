@@ -63,7 +63,7 @@
                                     {!! csrf_field() !!}
                                     {!! method_field('DELETE') !!}
 
-                                    <button>Delete Task</button>
+                                    <button class="btn btn-primary">Delete Task</button>
                                 </form>
                             </td>
                         </tr>

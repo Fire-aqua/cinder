@@ -29,7 +29,7 @@ class MountainController extends Controller
         return view('file_mountains', compact('mountains', 'isIcy', 'minHeight', 'maxHeight'));
     }
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $mountain = new Mountain;
         $mountain->name = $request->name;
@@ -38,8 +38,8 @@ class MountainController extends Controller
         $mountain->save();
         return redirect('/mountains');        
     }
-    
-    public function delete(Request $request, $id)
+
+    public function destroy(Request $request, $id)
     {
         Mountain::find($id)->delete();
         return redirect('/mountains');
