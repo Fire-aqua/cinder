@@ -10,7 +10,8 @@ use App\Http\Controllers\{
     CatController,
     BreedController,
     ProfileController,
-    GoodController};
+    GoodController,
+    UploadController};
 
 Route::get('/', [HomeController::class , 'index']);
 Route::get('/post-form', [HomeController::class, 'formPage']);
@@ -18,19 +19,23 @@ Route::get('/post-form', [HomeController::class, 'formPage']);
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::group(['middleware' => ['web', 'auth']], function () {
-    Route::get('/todo', [ToDoListController:: class, 'getTasks']);
-    Route::post('/task', [ToDoListController:: class, 'addTasks']);
+    Route::get('/todo', [ToDoListController::class, 'getTasks']);
+    Route::post('/task', [ToDoListController::class, 'addTasks']);
     Route::delete('/task/{task}', [ToDoListController:: class, 'delTasks']);
 
     Route::get('/user', [ProfileController::class, 'index']);
     Route::post('/user', [ProfileController::class, 'saveUserData']);
 
     Route::resource('goods', GoodController::class);
+    Route::post('/goods/import', [GoodController::class, 'import']);
 
     Route::resource('posts', PostController::class);
     Route::resource('mountains', MountainController::class);
     Route::resource('cats', CatController::class);
     Route::resource('breeds', BreedController::class);
+
+    Route::get('/upload', [UploadController::class, 'getForm']);
+    Route::post('/upload', [UploadController::class, 'upload']);
 });
 
 

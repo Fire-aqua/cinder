@@ -3,7 +3,7 @@
 
 @auth
     <div class="text-right my-3">    
-        <a class="btn btn-primary" href="/posts/create" role="button">Добавить новость</a>
+        <a class="btn btn-outline-primary" href="/posts/create" role="button">Добавить новость</a>
     </div>
 @endauth
 

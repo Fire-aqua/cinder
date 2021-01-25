@@ -3,7 +3,13 @@
 
 @auth
     <div class="text-right my-3">    
-      <button type="button" class="btn btn-primary" id="add-good">Добавить товар</button>
+      
+      <form method="post" action="{{ url('/goods/import') }}" enctype="multipart/form-data">
+        <input name="_token" type="hidden" value="{{ csrf_token() }}">
+        <input class="form-control " type="file" multiple name="file[]">
+        <button type="submit" class="btn btn-secondary my-3">Импортировать</button>
+      </form>
+      <button type="button" class="btn btn-outline-primary" id="add-good">Добавить вручную</button>
     </div>
 @endauth
 
@@ -52,15 +58,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="good_name"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <input type="hidden" id="egood_id">
-        Название: <input type="text" class="form-control my-3" name="egood-name" id="egood_name"><br>
-        Размер: <input type="text" class="form-control my-3" name="egood-size" id="egood_size"><br>
-        В наличии: <input type="checkbox" class="form-check-input my-3" name="egood-presence" id="egood_presence"><br>
-        В продаже с <input type="date" class="form-control my-3" name="egood-sells" id="egood_sells"><br>
+        <div class="my-3">Название: <input type="text" class="form-control" name="egood-name" id="egood_name"></div>
+        <div class="my-3">Размер: <input type="text" class="form-control" name="egood-size" id="egood_size"></div>
+        <div class="my-3">В наличии: <input type="checkbox" class="form-check-input" name="egood-presence" id="egood_presence"></div>
+        <div class="my-3"> В продаже с <input type="date" class="form-control" name="egood-sells" id="egood_sells"></div>
       </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">

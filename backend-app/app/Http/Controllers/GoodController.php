@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Good;
 use Illuminate\Http\Request;
+use App\Imports\GoodsImport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 class GoodController extends Controller
 {
@@ -51,6 +54,20 @@ class GoodController extends Controller
         $good->sells_since = $request->sells_since;
         $good->save();
         return response()->json($good->toArray());
+    }
+
+    public function import(Request $request) 
+    {
+        foreach ($request->file() as $file) {
+            foreach ($file as $f) {
+                $f->move(storage_path('app/public'), 'goods.xlsx');
+               // dd($f);
+            }
+            
+        }
+        
+        Excel::import(new GoodsImport, storage_path('app/public/goods.xlsx'));
+        return redirect('/goods')->with('Импорт выполнен успешно');
     }
 }
 
