@@ -1,6 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.home_nav')
 @section('content')
-
 @auth
     <div class="text-right my-3">    
       
@@ -12,7 +11,6 @@
       <button type="button" class="btn btn-outline-primary" id="add-good">Добавить вручную</button>
     </div>
 @endauth
-
 <div id="good-renew">
   @foreach ($goods as $good)
     <div class="card my-2 good-renew-inner">
@@ -26,7 +24,6 @@
     </div>
   @endforeach
 </div>
-
 <div class="modal fade" id="the-good" tabindex="-1" aria-labelledby="goodsHeader" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -55,7 +52,6 @@
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="edit-good" tabindex="-1" aria-labelledby="goodsHeader" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -80,5 +76,4 @@
     </div>
   </div>
 </div>
-
 @endsection

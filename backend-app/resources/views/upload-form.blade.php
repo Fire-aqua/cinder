@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layouts.home_nav')
 @section('content')
     <body>
         <form method="post" enctype="multipart/form-data">

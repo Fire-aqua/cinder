@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.home_nav')
 @section('content')
     <div class="text-center m-3">
     <a href="/cats" class="btn btn-outline-primary">Котики</a>
@@ -13,12 +13,10 @@
             <tr class="text-center align-middle">
                 <td>{{$breed->name}}</td>
                 @auth
-                <td class="d-flex justify-content-around">
-                    
+                <td class="d-flex justify-content-around">                    
                     <a href="/breeds/create" role="button" class="btn btn-secondary">
                         <span class="mdi mdi-cat md-36"></span>
-                    </a>
-                    
+                    </a>                    
                     <a href="/breeds/{{$breed->id}}/edit" role="button" class="btn btn-secondary">
                         <span class="mdi mdi-clipboard-edit-outline"></span>
                     </a>

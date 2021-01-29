@@ -1,6 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.home_nav')
 @section('content')
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="card">
@@ -46,5 +45,4 @@
         </div>
     </div>
 </div>
-
 @endsection

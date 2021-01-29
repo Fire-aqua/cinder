@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.home_nav')
 @section('content')
 @auth
     <div>
@@ -19,7 +19,6 @@
         </form>
     </div>
 @endauth
-
 <div>
     <form action="{{url('mountains')}}" method="GET" class="form">
         <div class="row mb-3">
@@ -57,7 +56,6 @@
         </div>
     </form>
 </div>
-
 <div class="table-responsive ">
     <table class="table table-striped table-bordered">
         <tr class="text-center">

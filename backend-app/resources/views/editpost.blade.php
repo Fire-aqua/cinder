@@ -1,6 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.home_nav')
 @section('content')
-
 <input type="hidden" id="post_id" value="{{$post->id}}">
 <div class="form-check-inline d-flex">
     <input placeholder="Заголовок" type="text" class="form-control my-3" name="title" id="post_title" value="{{$post->title}}">
@@ -31,5 +30,4 @@
         <button id="save_post" class="btn btn-outline-primary btn-block">Сохранить</button>
     </div>
 </div>
-
 @endsection

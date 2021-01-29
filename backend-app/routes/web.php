@@ -11,13 +11,16 @@ use App\Http\Controllers\{
     BreedController,
     ProfileController,
     GoodController,
-    UploadController};
-
-Route::get('/', [HomeController::class , 'index']);
-Route::get('/post-form', [HomeController::class, 'formPage']);
+    UploadController,
+    RootController,
+    CabinetController,
+    LandingController};
 
 Auth::routes();
+Route::get('/', [RootController::class , 'index']);
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/land', [LandingController::class , 'index']);
+
 
 Route::resource('goods', GoodController::class);
 Route::resource('posts', PostController::class);
@@ -32,7 +35,8 @@ Route::post('/goods/import', [GoodController::class, 'import']);
 Route::get('cats/export/', [CatController::class, 'export']);
 
 Route::group(['middleware' => ['web', 'auth']], function () {
-  
+    
+    Route::get('/cabinet', [CabinetController::class , 'index']);
     Route::get('/user', [ProfileController::class, 'index']);
     Route::post('/user', [ProfileController::class, 'saveUserData']);
     Route::post('/user/import', [ProfileController::class, 'import']);

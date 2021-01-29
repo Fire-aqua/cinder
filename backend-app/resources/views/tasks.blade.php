@@ -1,6 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.home_nav')
 @section('content')
-
 <div class="panel-body">
     @include('common.errors')
     <form action="{{ url('task') }}" method="POST" class="form-horizontal">

@@ -1,6 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.home_nav')
 @section('content')
-
 @auth
     <div class="text-center row m-3">
         <div class="col">
@@ -15,9 +14,7 @@
             </form>
         </div>                
     </div>
-    @endauth
-
-
+@endauth
 <div class="table-responsive">
     <table class="table table-bordered">
         <tr class="text-center">
@@ -35,12 +32,10 @@
             <td class="text-center d-flex justify-content-around">
                 <a href="/cats/create" role="button" class="btn btn-secondary">
                     <span class="mdi mdi-cat md-36"></span>
-                </a>
-                
+                </a>                
                 <a href="/cats/{{$cat->id}}/edit" role="button" class="btn btn-secondary">
                     <span class="mdi mdi-clipboard-edit-outline"></span>
-                </a>
-                
+                </a>                
                 <form action="{{url('cats/'.$cat->id)}}" method="POST" class="form">
                     {!! csrf_field() !!}
                     {!! method_field('DELETE') !!}
@@ -54,6 +49,4 @@
         @endforeach
     </table>
 </div>
-
-
 @endsection

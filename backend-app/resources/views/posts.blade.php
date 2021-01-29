@@ -1,12 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.home_nav')
 @section('content')
-
 @auth
     <div class="text-right my-3">    
         <a class="btn btn-outline-primary" href="/posts/create" role="button">Добавить новость</a>
     </div>
 @endauth
-
 @foreach ($posts as $post)
     <div class="card my-2">
         <div class="card-body">
@@ -34,5 +32,4 @@
         @endauth
     </div>
 @endforeach
-
 @endsection
