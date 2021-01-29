@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CatsExport;
 use App\Models\Breed;
 use Illuminate\Http\Request;
 use App\Models\Cat;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CatController extends Controller
 {
@@ -50,6 +52,11 @@ class CatController extends Controller
     {
         $cat->delete();
         return redirect('/cats');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new CatsExport, 'cats.xlsx');
     }
 
 }

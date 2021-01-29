@@ -6,7 +6,7 @@
     {!! method_field(empty($breed->id) ? 'POST' : 'PUT') !!}
 
     <div class="form-group m-3">
-      <input placeholder="Порода" type="text" name="name" value="{{ $breed->name }}">
+      <input placeholder="Порода" class="form-control" type="text" name="name" value="{{ $breed->name }}">
     </div>
     
     <div class="m-3">

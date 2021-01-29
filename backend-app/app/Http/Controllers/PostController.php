@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Imports\PostsImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PostController extends Controller
 {
@@ -58,6 +60,12 @@ class PostController extends Controller
     public function destroy(Request $request, $id)
     {
         Post::find($id)->delete();
+        return redirect('/posts');
+    }
+
+    public function import() 
+    {
+        Excel::import(new PostsImport, 'posts.xlsx');        
         return redirect('/posts');
     }
 } 

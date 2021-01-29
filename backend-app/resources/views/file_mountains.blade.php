@@ -1,5 +1,25 @@
 @extends('layouts.app')
 @section('content')
+@auth
+    <div>
+        <form action="{{url('mountains')}}" method="POST" class="form">
+            {!! csrf_field() !!}
+            <div class="d-flex form-check-inline">
+                <input placeholder="Название" class="form-control m-2" type="string" name="name">
+                <input placeholder="Высота" class="form-control m-2" type="number" name="height">
+                <input name="is_icy" class="m-2" type="radio" value="1"> <label class="form-check-label ml-2">Лед есть</label>
+                <input name="is_icy" class="m-2" type="radio" value="0"> <label class="form-check-label ml-2">Льда нет</label>
+            </div>
+            <div class="row my-3">
+                <div class="col">
+                    <button type="submit" class="btn btn-outline-primary btn-block">Добавить гору</button>
+                    <a class="btn btn-outline-primary mx-3" href="{{ URL::to('mountains/pdf') }}">Скачать как PDF</a>
+                </div>
+            </div>
+        </form>
+    </div>
+@endauth
+
 <div>
     <form action="{{url('mountains')}}" method="GET" class="form">
         <div class="row mb-3">
@@ -32,29 +52,12 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <button type="submit" class="btn btn-outline-primary btn-block">Искать</button>
-            </div>
+                <button type="submit" class="btn btn-outline-primary  btn-block ">Отфильтровать</button>
+            </div>            
         </div>
     </form>
 </div>
-@auth
-    <div>
-        <form action="{{url('mountains')}}" method="POST" class="form">
-            {!! csrf_field() !!}
-            <div class="d-flex form-check-inline">
-                <input placeholder="Название" class="form-control m-2" type="string" name="name">
-                <input placeholder="Высота" class="form-control m-2" type="number" name="height">
-                <input name="is_icy" class="m-2" type="radio" value="1"> <label class="form-check-label ml-2">Лед есть</label>
-                <input name="is_icy" class="m-2" type="radio" value="0"> <label class="form-check-label ml-2">Льда нет</label>
-            </div>
-            <div class="row my-3">
-                <div class="col">
-                    <button type="submit" class="btn btn-outline-primary btn-block">Добавить</button>
-                </div>
-            </div>
-        </form>
-    </div>
-@endauth
+
 <div class="table-responsive ">
     <table class="table table-striped table-bordered">
         <tr class="text-center">

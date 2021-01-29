@@ -61,11 +61,8 @@ class GoodController extends Controller
         foreach ($request->file() as $file) {
             foreach ($file as $f) {
                 $f->move(storage_path('app/public'), 'goods.xlsx');
-               // dd($f);
-            }
-            
+            }            
         }
-        
         Excel::import(new GoodsImport, storage_path('app/public/goods.xlsx'));
         return redirect('/goods')->with('Импорт выполнен успешно');
     }

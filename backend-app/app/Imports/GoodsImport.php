@@ -4,8 +4,6 @@ namespace App\Imports;
 
 use App\Models\Good;
 use Maatwebsite\Excel\Concerns\ToModel;
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToCollection;
 
 class GoodsImport implements ToModel
 {
@@ -26,21 +24,3 @@ class GoodsImport implements ToModel
         }
     }
 }
-
-// class GoodsImport implements ToCollection
-// {
-//     public function collection(Collection $rows)
-//     {
-//         foreach ($rows as $row) 
-//         {
-//             if(!empty($row[0])) {
-//                 Good::create([
-//                 'name' => $row[0],
-//                 'size' => $row[1],
-//                 'presence' => $row[2],
-//                 'sells_since' => $row[3],  
-//             ]);
-//         }
-//         }
-//     }
-// }

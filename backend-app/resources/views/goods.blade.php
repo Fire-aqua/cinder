@@ -43,12 +43,14 @@
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">
           Закрыть
       </button>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-good" data-bs-dismiss="modal" aria-label="Close">
-        Редактировать
-      </button>
-      <button type="submit" class="btn btn-secondary" id="good_delete" data-bs-dismiss="modal" aria-label="Close">
-              Удалить
-          </button>
+      @auth
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit-good" data-bs-dismiss="modal" aria-label="Close">
+          Редактировать
+        </button>
+        <button type="submit" class="btn btn-secondary" id="good_delete" data-bs-dismiss="modal" aria-label="Close">
+                Удалить
+        </button>
+      @endauth
        </div>
     </div>
   </div>

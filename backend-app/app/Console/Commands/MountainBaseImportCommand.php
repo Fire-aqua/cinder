@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Console\Commands;
-use App\Imports\PostsImport;
+use App\Imports\MountainsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Console\Command;
 
@@ -12,7 +12,7 @@ class BaseImportCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'base-import-command';
+    protected $signature = 'mountain-base-import-command';
 
     /**
      * The console command description.
@@ -38,6 +38,6 @@ class BaseImportCommand extends Command
      */
     public function handle()
     {        
-        Excel::import(new PostsImport, storage_path('app/public/posts.xlsx'));
+        Excel::import(new MountainsImport, storage_path('app/public/mountains.xlsx'));
     }
 }

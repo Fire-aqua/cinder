@@ -18,18 +18,20 @@
                 @endforeach
             </div>
         </div>
-        @if ($post->user_id==Auth::user()->id)
-            <div class="text-right mx-3">
-                <a class="btn btn-secondary" href="/posts/{{$post->id}}/edit" role="button">Редактировать</a>
-            </div>
-            <div class="text-right m-3">
-                <form action="{{ url('posts/'.$post->id) }}" method="POST">
-                    {!! csrf_field() !!}
-                    {!! method_field('DELETE') !!}
-                    <button type="submit" class="btn btn-secondary">Удалить</button>
-                </form>
-            </div>
-        @endif
+        @auth
+            @if ($post->user_id==Auth::user()->id)
+                <div class="text-right mx-3">
+                    <a class="btn btn-secondary" href="/posts/{{$post->id}}/edit" role="button">Редактировать</a>
+                </div>
+                <div class="text-right m-3">
+                    <form action="{{ url('posts/'.$post->id) }}" method="POST">
+                        {!! csrf_field() !!}
+                        {!! method_field('DELETE') !!}
+                        <button type="submit" class="btn btn-secondary">Удалить</button>
+                    </form>
+                </div>
+            @endif
+        @endauth
     </div>
 @endforeach
 

@@ -5,7 +5,6 @@
     <div class="row justify-content-center">
         <div class="card">
             <div class="card-body">
-
                 <div class="row">
                     <div class="col">
                         Имя профиля: <b>{{Auth::user()->name}}</b>
@@ -21,11 +20,23 @@
                             <input type="date" name="user_birthday" id="user_birthday" value="{{Auth::user()->birthday}}">
                         </div>
                     </div>
-
                     <div class="col text-center">
-                        <img src="storage/app/public/img/{{Auth::user()->img}}" class="img-fluid rounded" style="max-width:300px;max-heigth:300px" alt="изображение не загружено"><br>
-                        <button id="download_user_avatar_opener" class="btn btn-outline-primary btn-block m-3">Загрузить аватар</button>
-                        
+                        <div class="m-3">
+                            @if (Storage::disk('public')->exists('avatars/'.Auth::user()->id.'_avatar.jpg')))
+                                <img src="{{Storage::url('avatars/'.Auth::user()->id.'_avatar.jpg')}}"
+                                class="img-fluid rounded"
+                                style="max-width:300px; max-heigth:300px">                            
+                            @else                                
+                                <img src="{{Storage::url('avatars/d_avatar.jpg')}}"
+                                class="img-fluid rounded"
+                                style="max-width:300px; max-heigth:300px">
+                            @endif                                
+                        </div>
+                        <form method="post" action="{{ url('/user/import') }}" enctype="multipart/form-data">
+                            <input name="_token" type="hidden" value="{{ csrf_token() }}">
+                            <input class="form-control" type="file" name="avatar" accept="image/*,image/jpg">
+                            <button type="submit" class="btn btn-outline-primary btn-block m-3">Загрузить аватар</button>
+                        </form>                                                
                     </div>
                 </div>
                 <div style="text-align: center">

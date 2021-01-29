@@ -6,14 +6,14 @@
     {!! method_field(empty($cat->id) ? 'POST' : 'PUT') !!}
 
     <div class="form-group m-3">
-      <input placeholder="Имя" type="text" name="name" value="{{ $cat->name }}">
+      <input placeholder="Имя" class="form-control" type="text" name="name" value="{{ $cat->name }}">
     </div>
     <div class="form-group m-3">
-      <input placeholder="Лет" type="number" min="0" max="30" name="age" value="{{ $cat->age }}">
+      <input placeholder="Лет" class="form-control" type="number" min="0" max="30" name="age" value="{{ $cat->age }}">
     </div>
 
     <div class="form-group m-3">
-      <select class="select-sm" name="breed_id">
+      <select class="form-select" name="breed_id">
         <option value="" selected>Выберите породу</option>
         @foreach ($breeds as $breed)
           <option value="{{ $breed->id }}">{{ $breed->name }}</option>

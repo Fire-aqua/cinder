@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="text-center m-3">
-    <a href="/cats">Котики</a>
+    <a href="/cats" class="btn btn-outline-primary">Котики</a>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered">

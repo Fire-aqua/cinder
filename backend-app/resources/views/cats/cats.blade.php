@@ -2,10 +2,21 @@
 @section('content')
 
 @auth
-    <div class="text-center m-3">
-        <a href="/breeds" role="button">Породы</a>
+    <div class="text-center row m-3">
+        <div class="col">
+            <a href="/breeds" class="btn btn-outline-primary">Породы</a>
+        </div>
+        <div class="col">
+            <form action="{{url('cats/export')}}" method="GET" class="form">
+                {!! csrf_field() !!}
+                <button type="submit" class="btn btn-secondary">
+                    Скачать базу котиков
+                </button>
+            </form>
+        </div>                
     </div>
     @endauth
+
 
 <div class="table-responsive">
     <table class="table table-bordered">

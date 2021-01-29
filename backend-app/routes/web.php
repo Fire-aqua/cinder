@@ -18,24 +18,29 @@ Route::get('/post-form', [HomeController::class, 'formPage']);
 
 Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
+
+Route::resource('goods', GoodController::class);
+Route::resource('posts', PostController::class);
+Route::get('/mountains/pdf', [MountainController::class, 'createPDF']);
+Route::resource('mountains', MountainController::class);
+Route::resource('cats', CatController::class)->except('show');
+Route::resource('breeds', BreedController::class);
+
+Route::get('/upload', [UploadController::class, 'getForm']);
+Route::post('/upload', [UploadController::class, 'upload']);
+Route::post('/goods/import', [GoodController::class, 'import']);
+Route::get('cats/export/', [CatController::class, 'export']);
+
 Route::group(['middleware' => ['web', 'auth']], function () {
+  
+    Route::get('/user', [ProfileController::class, 'index']);
+    Route::post('/user', [ProfileController::class, 'saveUserData']);
+    Route::post('/user/import', [ProfileController::class, 'import']);
+
     Route::get('/todo', [ToDoListController::class, 'getTasks']);
     Route::post('/task', [ToDoListController::class, 'addTasks']);
     Route::delete('/task/{task}', [ToDoListController:: class, 'delTasks']);
-
-    Route::get('/user', [ProfileController::class, 'index']);
-    Route::post('/user', [ProfileController::class, 'saveUserData']);
-
-    Route::resource('goods', GoodController::class);
-    Route::post('/goods/import', [GoodController::class, 'import']);
-
-    Route::resource('posts', PostController::class);
-    Route::resource('mountains', MountainController::class);
-    Route::resource('cats', CatController::class);
-    Route::resource('breeds', BreedController::class);
-
-    Route::get('/upload', [UploadController::class, 'getForm']);
-    Route::post('/upload', [UploadController::class, 'upload']);
+    
 });
 
 
