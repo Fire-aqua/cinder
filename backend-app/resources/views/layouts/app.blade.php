@@ -10,4 +10,18 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+<body>
+    <div>
+        <main class="py-4 container">
+            <div class="row">
+                <div class="col-2">
+                    @include('common.sidebar')
+                </div>
+                <div class="col">
+                    @yield('content')
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
 </html>

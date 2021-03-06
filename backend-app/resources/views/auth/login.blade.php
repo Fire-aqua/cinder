@@ -1,10 +1,10 @@
-@extends('layouts.home_nav')
+@extends('layouts.app')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Вход') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -54,6 +54,10 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Войти') }}
                                 </button>
+
+                                <a class="btn btn-primary mx-3" href="{{ route('register') }}">
+                                    {{ __('Регистрация') }}
+                                </a>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">

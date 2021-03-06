@@ -28,15 +28,7 @@
                         <a href="/landing" class="btn btn-outline-primary">Лендинг</a>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card h-100 text-center">
-                    <div class="card-body">
-                        <p class="card-text text-center">Создай свой космос!</p>
-                        <a href="/cabinet" class="btn btn-outline-primary">Личный кабинет</a>
-                    </div>
-                </div>
-            </div>
+            </div>            
         </div>
     </div>
 </body>

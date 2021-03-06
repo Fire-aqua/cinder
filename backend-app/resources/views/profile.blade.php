@@ -21,7 +21,7 @@
                     </div>
                     <div class="col text-center">
                         <div class="m-3">
-                            @if (Storage::disk('public')->exists('avatars/'.Auth::user()->id.'_avatar.jpg')))
+                            @if (Storage::disk('public')->exists('avatars/'.Auth::user()->id.'_avatar.jpg'))
                                 <img src="{{Storage::url('avatars/'.Auth::user()->id.'_avatar.jpg')}}"
                                 class="img-fluid rounded"
                                 style="max-width:300px; max-heigth:300px">                            

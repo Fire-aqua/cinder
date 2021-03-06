@@ -1,4 +1,4 @@
-@extends('layouts.home_nav')
+@extends('layouts.app')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4 my-3">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Выслать ссылку для сброса пароля') }}
                                 </button>
